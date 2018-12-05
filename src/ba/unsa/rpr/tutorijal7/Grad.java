@@ -44,10 +44,12 @@ public class Grad {
 
         String podaciOGradu = this.naziv + " (" + this.brojStanovnika + ")\nMjerenja: ";
 
-        for(int i=0; i<temperature.length; i++) {
-            podaciOGradu += temperature[i];
-            if( i != temperature.length -1 ) podaciOGradu += ",";
+        if(temperature != null) {
+            for (int i = 0; i < temperature.length; i++) {
+                podaciOGradu += temperature[i];
+                if (i != temperature.length - 1) podaciOGradu += ",";
 
+            }
         }
 
         podaciOGradu += "\n";
