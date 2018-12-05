@@ -1,4 +1,6 @@
+<?xml version="1.0"?>
 <drzave>
+
     <drzava naziv="Bosna i Hercegovina" brojStanovnika="3531159" povrsina="51209" jedinicaZaPovrsinu="km2">
         <glavniGrad naziv="Sarajevo" brojStanovnika="302899">
             <temperature>
@@ -16,9 +18,10 @@
             <temperature>
                 <double>25.20</double>
                 <double>17.83</double>
-                <double>2.40</double>
+                <double>12.40</double>
                 <double>10.55</double>
             </temperature>
         </glavniGrad>
     </drzava>
+
 </drzave>
