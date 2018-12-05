@@ -1,0 +1,24 @@
+<drzave>
+    <drzava naziv="Bosna i Hercegovina" brojStanovnika="3531159" povrsina="51209" jedinicaZaPovrsinu="km2">
+        <glavniGrad naziv="Sarajevo" brojStanovnika="302899">
+            <temperature>
+                <double>5.4</double>
+                <double>15.8</double>
+                <double>2.3</double>
+                <double>0.44</double>
+                <double>-1.1</double>
+            </temperature>
+        </glavniGrad>
+    </drzava>
+
+    <drzava naziv="Kambodža" brojStanovnika="13.363.421" povrsina="181.040" jedinicaZaPovrsinu="km2">
+        <glavniGrad naziv="Phnom Penh" brojStanovnika="1011264">
+            <temperature>
+                <double>25.20</double>
+                <double>17.83</double>
+                <double>2.40</double>
+                <double>10.55</double>
+            </temperature>
+        </glavniGrad>
+    </drzava>
+</drzave>
