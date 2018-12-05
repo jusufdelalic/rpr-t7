@@ -40,11 +40,11 @@ public class Tutorijal {
 
                 grad.setNaziv(podatak[0]);
 
-                double[] temperature = new double [1000];
-
                 int i = 0;
 
-                while( i < 1000 && i < podatak.length - 1 ) {
+                double[] temperature = new double [podatak.length-1];
+
+                while( i < 1000 && i < temperature.length ) {
 
                     //if( temperature[i] < -273.15 ) throw nelegalna temperatura...
 
@@ -52,6 +52,8 @@ public class Tutorijal {
 
                     i++;
                 }
+
+
 
                 grad.setTemperature(temperature);
 
@@ -76,10 +78,17 @@ public class Tutorijal {
     public static void main(String[] args) {
 
         try {
-            ucitajGradove();
+            var gradovi = ucitajGradove();
+
+            for(Grad grad : gradovi) {
+                System.out.println(grad);
+            }
         }
 
-        catch(FileNotFoundException e) {}
+        catch(FileNotFoundException e) {
+
+            // ništa...
+        }
 
     }
 }
