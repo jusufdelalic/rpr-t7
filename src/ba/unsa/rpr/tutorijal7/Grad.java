@@ -4,7 +4,7 @@ public class Grad {
 
     private String naziv;
     private int brojStanovnika;
-    private double [] temperature = new double [1000];
+    private double [] temperature;
 
     public String getNaziv() {
         return naziv;
@@ -36,6 +36,24 @@ public class Grad {
         this.naziv = null;
         this. brojStanovnika = 0;
         temperature = null;
+    }
+
+
+    @Override
+    public String toString() {
+
+        String podaciOGradu = this.naziv + " (" + this.brojStanovnika + ")\nMjerenja: ";
+
+        for(int i=0; i<temperature.length; i++) {
+            podaciOGradu += temperature[i];
+            if( i != temperature.length -1 ) podaciOGradu += ",";
+
+        }
+
+        podaciOGradu += "\n";
+
+        return podaciOGradu;
+
     }
 
 
