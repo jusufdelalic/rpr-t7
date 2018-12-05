@@ -1,5 +1,7 @@
 package ba.unsa.rpr.tutorijal7;
 
+import java.beans.XMLDecoder;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -69,13 +71,44 @@ public class Tutorijal {
         }
 
 
-
-
         return  gradovi;
 
     }
 
-    public static void main(String[] args) {
+    /*
+
+    static Fakultet ucitajXml() {
+        Fakultet f = null;
+        try {
+            XMLDecoder ulaz = new XMLDecoder(new FileInputStream("fakultet.xml"));
+            f = (Fakultet) ulaz.readObject();
+            ulaz.close();
+        } catch(Exception e) {
+            System.out.println("Greška: "+e);
+        }
+        return f;
+    }
+     */
+
+    public static UN ucitajXml(ArrayList<Grad> gradovi)  {
+
+        //ucitati drzave iz xml datoteke u klasu un i vratiti tu klasu
+
+        UN ujedinjeneNacije = null;
+
+        try {
+            XMLDecoder ulaz = new XMLDecoder(new FileInputStream("drzave.xml"));
+            ujedinjeneNacije = (UN) ulaz.readObject();
+            ulaz.close();
+        } catch(Exception e) {
+            System.out.println("Greška: "+e);
+        }
+
+
+        return ujedinjeneNacije;
+    }
+
+    public static void main(String[] args) throws Exception{
 
         try {
             var gradovi = ucitajGradove();
@@ -83,9 +116,11 @@ public class Tutorijal {
             for(Grad grad : gradovi) {
                 System.out.println(grad);
             }
+
+            var UN = ucitajXml(gradovi);
         }
 
-        catch(FileNotFoundException e) {
+        catch(Exception e) {
 
             // ništa...
         }
