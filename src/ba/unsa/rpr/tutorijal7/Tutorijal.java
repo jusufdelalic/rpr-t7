@@ -1,11 +1,20 @@
 package ba.unsa.rpr.tutorijal7;
 
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
 import java.beans.XMLDecoder;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 public class Tutorijal {
 
@@ -75,40 +84,58 @@ public class Tutorijal {
 
     }
 
-    /*
+    public static void ispisiElement(Element element) {
 
-    static Fakultet ucitajXml() {
-        Fakultet f = null;
-        try {
-            XMLDecoder ulaz = new XMLDecoder(new FileInputStream("fakultet.xml"));
-            f = (Fakultet) ulaz.readObject();
-            ulaz.close();
-        } catch(Exception e) {
-            System.out.println("Greška: "+e);
+        System.out.print("Element " + element.getTagName() + ", ");
+
+        int brAtributa = element.getAttributes().getLength();
+        System.out.print(brAtributa+" atributa");
+
+        NodeList djeca = element.getChildNodes();
+
+        // Ako nema djece ispisujemo sadržaj
+        if (djeca.getLength() == 1) {
+            String sadrzaj = element.getTextContent();
+            System.out.println(", sadrzaj: '" + sadrzaj + "'");
+        } else {
+            System.out.println("");
         }
-        return f;
+
+        for(int i = 0; i < djeca.getLength(); i++) {
+            Node dijete = djeca.item(i);
+            if (dijete instanceof Element) {
+                ispisiElement((Element)dijete);
+            }
+        }
     }
-     */
 
     public static UN ucitajXml(ArrayList<Grad> gradovi)  {
 
-        //ucitati drzave iz xml datoteke u klasu un i vratiti tu klasu
+        // ucitati drzave iz xml datoteke u klasu un i vratiti tu klasu
 
         UN ujedinjeneNacije = null;
 
+        Document xmldoc = null;
+
         try {
-            XMLDecoder ulaz = new XMLDecoder(new FileInputStream("drzave.xml"));
-            ujedinjeneNacije = (UN) ulaz.readObject();
-            ulaz.close();
-        } catch(Exception e) {
-            System.out.println("Greška: "+e);
+
+            DocumentBuilder docReader = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            xmldoc = docReader.parse(new File("drzave.xml"));
+
+            Element korijen = xmldoc.getDocumentElement();
+
+            ispisiElement(korijen);
+
         }
 
+        catch(Exception e) {
+            System.out.println("Greška: " + e);
+        }
 
         return ujedinjeneNacije;
     }
 
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) throws Exception {
 
         try {
             var gradovi = ucitajGradove();
