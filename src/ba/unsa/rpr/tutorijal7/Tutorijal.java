@@ -6,10 +6,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 import java.beans.XMLDecoder;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.beans.XMLEncoder;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -133,6 +131,24 @@ public class Tutorijal {
         }
 
         return ujedinjeneNacije;
+    }
+
+    public static void zapisiXml (UN ujedinjeneNacije) throws FileNotFoundException{
+
+        try{
+
+            XMLEncoder izlazniTok = new XMLEncoder(new FileOutputStream("un.xml"));
+
+            izlazniTok.writeObject(ujedinjeneNacije);
+            izlazniTok.close();
+
+        }
+
+        catch(FileNotFoundException izuzetak) {
+
+            System.out.println("Greska prilikom zapisivanja u datoteku: " + izuzetak);
+        }
+
     }
 
     public static void main(String[] args) throws Exception {
